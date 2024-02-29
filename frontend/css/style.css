@@ -1,0 +1,54 @@
+#title {
+    font-size: 4rem;
+    color: rgb(26, 133, 97);
+}
+
+.pacifico {
+    font-family: 'Pacifico', cursive;
+}
+
+#tasks-col {
+    padding: 2rem;
+    background-color: rgb(26, 133, 97);
+    color: azure;
+}
+
+.tasks-container {
+    background-color: azure;
+    color: rgb(36, 34, 34);
+}
+
+.task-item {
+    margin: 10px;
+    border-bottom: 1px solid rgb(26, 133, 97);
+}
+
+.task-item::marker {
+    color: rgb(26, 133, 97);
+}
+
+.task-x {
+    color: rgb(26, 133, 97);
+}
+
+.task-x:hover {
+    color: rgb(150, 17, 17);
+}
+
+.form-btn {
+    border: 3px solid rgba(0, 0, 255, 0);
+    border-radius: 2px;
+    padding: 0 6px;
+    height: 50%;
+    background-color: azure;
+    color: rgb(26, 133, 97);
+}
+
+.form-btn:hover {
+    border: 3px solid rgb(21, 255, 0);
+    cursor: pointer;
+}
+
+.form-input {
+    width: 100%;
+}
