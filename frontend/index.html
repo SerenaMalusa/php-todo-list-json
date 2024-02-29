@@ -1,90 +1,93 @@
 <!DOCTYPE html>
 <html lang="it">
-    <head>
 
-        <!-- characters and viewport tags -->
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
 
-        <!-- SEO tags -->
-        <meta name="author" content="Serena Malusà" />
-        <meta name="description" content="VueJs exercise" />
+    <!-- characters and viewport tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- title and icon -->
-        <title>PHP ToDo List JSON</title>
-        <link rel="icon" href="./img/logo-small.ico" />
+    <!-- SEO tags -->
+    <meta name="author" content="Serena Malusà" />
+    <meta name="description" content="VueJs exercise" />
 
-        <!-- CSS -->
-        <!-- Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <!-- Bootstrap Icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <!-- my style -->
-        <link rel="stylesheet" href="./css/style.css">
+    <!-- title and icon -->
+    <title>PHP ToDo List JSON</title>
+    <link rel="icon" href="./img/logo-small.ico" />
 
-        <!-- JS -->
-        <!-- VueJs -->
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <!-- my script -->
-        <script src="./js/main.js" defer></script>
+    <!-- CSS -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- my style -->
+    <link rel="stylesheet" href="./css/style.css">
 
-    </head>
-    <body>
-        <!-- container for Vue -->
-        <div id="app">
+    <!-- JS -->
+    <!-- VueJs -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- my script -->
+    <script src="./js/main.js" defer></script>
 
-            <!-- HEADER -->
-            <header>
-                
-                <div class="container text-center my-5">
-    
-                    <h1 class="pacifico" id="title">My to do list</h1>
-    
-                </div>
-                
-            </header>
-            <!-- END HEADER -->
-            
-            <!-- MAIN -->
-            <main>
+</head>
 
-                <!-- bootstrap grid -->
-                <div class="container mb-4">
-                    <div class="row justify-content-center">
-                        <div class="col-11 col-lg-8 col-xl-6 text text-center" id="tasks-col">
+<body>
+    <!-- container for Vue -->
+    <div id="app">
 
-                            <h2 class="pacifico pb-2">Cose da fare</h2>
+        <!-- HEADER -->
+        <header>
 
-                            <!-- tasks container -->
-                            <div class="tasks-container p-2 text-start">
-                                 <ul class="tasks-list">
+            <div class="container text-center my-5">
 
-                                    <li v-if="tasks.length == 0" class="task-item">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="mb-1"> </p>
-                                            <div class="task-x px-1">
-                                                <i class="bi bi-x-square-fill"></i>
-                                            </div>
+                <h1 class="pacifico" id="title">My to do list</h1>
+
+            </div>
+
+        </header>
+        <!-- END HEADER -->
+
+        <!-- MAIN -->
+        <main>
+
+            <!-- bootstrap grid -->
+            <div class="container mb-4">
+                <div class="row justify-content-center">
+                    <div class="col-11 col-lg-8 col-xl-6 text text-center" id="tasks-col">
+
+                        <h2 class="pacifico pb-2">Cose da fare</h2>
+
+                        <!-- tasks container -->
+                        <div class="tasks-container p-2 text-start">
+                            <ul class="tasks-list">
+
+                                <li v-if="tasks.length == 0" class="task-item">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-1"> </p>
+                                        <div class="task-x px-1">
+                                            <i class="bi bi-x-square-fill"></i>
                                         </div>
-                                    </li>
+                                    </div>
+                                </li>
 
-                                    <li v-for="(task,i) in tasks" class="task-item">
-                                        <div class="d-flex justify-content-between">
-                                            <p  
-                                                :class="textDecor = (task.done) ? 'text-decoration-line-through text-danger' : ''" 
-                                                class="mb-1"
-                                            >{{task.text}}</p>
-                                            <div class="task-x px-1">
-                                                <i class="bi bi-x-square-fill"></i>
-                                            </div>
+                                <li v-for="(task,i) in tasks" class="task-item">
+                                    <div class="d-flex justify-content-between">
+                                        <p :class="textDecor = (task.done) ? 'text-decoration-line-through text-danger' : ''"
+                                            class="mb-1">{{task.text}}</p>
+                                        <div class="task-x px-1">
+                                            <i class="bi bi-x-square-fill"></i>
                                         </div>
-                                    </li>
+                                    </div>
+                                </li>
 
-                                    <!-- <li class="task-item">
+                                <!-- <li class="task-item">
                                         <div class="d-flex justify-content-between">
 
                                             <p class="mb-1">ciao</p>
@@ -96,46 +99,45 @@
                                         </div>
                                     </li>-->
 
-                                 </ul>
-                            </div>
-                            <!-- end tasks container -->
+                            </ul>
+                        </div>
+                        <!-- end tasks container -->
 
-                            <!-- add new task container -->
-                            <div class="new-task-form border border-top-0 p-3">
+                        <!-- add new task container -->
+                        <div class="new-task-form border border-top-0 p-3">
 
-                                <h2 class="pacifico">Aggiungi qualcosa di nuovo</h2>
+                            <h2 class="pacifico">Aggiungi qualcosa di nuovo</h2>
 
-                                <!-- add new task form -->
-                                <div class="d-flex justify-content-center gap-2 p-3 pb-0" action="#">
-                                    <div class="input-container text-start col-10">
-                                        <input 
-                                            v-model="newTask.text" 
-                                            :class="alert = (isInputEmpty) ? 'border-danger bg-danger bg-opacity-50' : ''" class="form-input col-10" 
-                                            type="text"
-                                        >
-                                        <p v-if="message == 'done'">Task aggiunta correttamente!</p>
-                                        <p v-else-if="message == 'error'" class="text-danger">Inserisci qualcosa da fare</p>
+                            <!-- add new task form -->
+                            <div class="d-flex justify-content-center gap-2 p-3 pb-0" action="#">
+                                <div class="input-container text-start col-10">
+                                    <input v-model="newTask.text"
+                                        :class="alert = (isInputEmpty) ? 'border-danger bg-danger bg-opacity-50' : ''"
+                                        class="form-input col-10" type="text">
+                                    <p v-if="message == 'done'">Task aggiunta correttamente!</p>
+                                    <p v-else-if="message == 'error'" class="text-danger">Inserisci qualcosa da fare</p>
 
-                                    </div>
-                                    <div class="form-btn">
-                                        <i class="bi bi-floppy2-fill"></i>
-                                    </div>
                                 </div>
-                                <!-- end add new task form -->
-
+                                <div class="form-btn">
+                                    <i class="bi bi-floppy2-fill"></i>
+                                </div>
                             </div>
-                            <!-- end add new task container -->
+                            <!-- end add new task form -->
 
                         </div>
+                        <!-- end add new task container -->
+
                     </div>
                 </div>
-                <!-- end bootstrap grid -->
+            </div>
+            <!-- end bootstrap grid -->
 
-            </main>
-            <!-- END MAIN -->
-            
+        </main>
+        <!-- END MAIN -->
 
-        </div>
-        <!-- end Vue container -->
-    </body>
+
+    </div>
+    <!-- end Vue container -->
+</body>
+
 </html>
