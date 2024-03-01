@@ -92,6 +92,20 @@ const app = createApp ({
             })
 
         },
+        deleteTask(index) {
+            const data = { index };
+
+            // axios call POST
+            axios.post( this.endpoint + 'delete-task.php', data, 
+            {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            }).then((res) => {
+                // then prints the response in the tasks array
+                this.tasks = res.data;
+                // console.log(res.data);
+            })
+
+        },
     },
     mounted() {
         this.fetchTasks();

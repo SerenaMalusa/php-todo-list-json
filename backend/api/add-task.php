@@ -20,4 +20,4 @@ file_put_contents('../data/tasks.json', $json_tasks);
 
 // print the response
 header('Content-Type: application/json');
-echo $json_tasks;
+echo file_get_contents('../data/tasks.json');

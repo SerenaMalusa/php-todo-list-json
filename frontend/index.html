@@ -84,7 +84,7 @@
                                         <div class="task-icons px-1">
                                             <i @click="toggleDone(task,i)"
                                                 class="bi bi-check-square-fill task-check me-2"></i>
-                                            <i class="bi bi-x-square-fill task-x"></i>
+                                            <i @click="deleteTask(i)" class="bi bi-x-square-fill task-x"></i>
                                         </div>
                                     </div>
                                 </li>
