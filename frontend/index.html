@@ -81,8 +81,10 @@
                                     <div class="d-flex justify-content-between">
                                         <p :class="textDecor = (task.done) ? 'text-decoration-line-through text-danger' : ''"
                                             class="mb-1">{{task.text}}</p>
-                                        <div class="task-x px-1">
-                                            <i class="bi bi-x-square-fill"></i>
+                                        <div class="task-icons px-1">
+                                            <i @click="toggleDone(task,i)"
+                                                class="bi bi-check-square-fill task-check me-2"></i>
+                                            <i class="bi bi-x-square-fill task-x"></i>
                                         </div>
                                     </div>
                                 </li>

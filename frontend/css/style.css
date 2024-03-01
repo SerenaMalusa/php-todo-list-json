@@ -27,12 +27,14 @@
     color: rgb(26, 133, 97);
 }
 
-.task-x {
+.task-icons {
     color: rgb(26, 133, 97);
 }
 
-.task-x:hover {
+.task-x:hover,
+.task-check:hover {
     color: rgb(150, 17, 17);
+    cursor: pointer;
 }
 
 .form-btn {

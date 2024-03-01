@@ -68,6 +68,30 @@ const app = createApp ({
                 this.message = '';
             }, 1000 * 15);
         },
+        // function to toggle the status of a task
+        toggleDone(task,index) {
+            // prepare the data to send
+            const data = {
+                index,
+                taskText: task.text,
+                taskDone: !task.done
+            };
+            // call the function to do the axios call to change a task
+            this.changeTask(data);
+        },
+        // function that changes the data of a specific task
+        changeTask(data) {
+
+            // axios call POST
+            axios.post( this.endpoint + 'change-task.php', data, 
+            {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            }).then((res) => {
+                // then prints the response in the tasks array
+                this.tasks = res.data;
+            })
+
+        },
     },
     mounted() {
         this.fetchTasks();
