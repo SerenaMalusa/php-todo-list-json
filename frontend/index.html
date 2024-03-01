@@ -111,14 +111,14 @@
                             <!-- add new task form -->
                             <div class="d-flex justify-content-center gap-2 p-3 pb-0" action="#">
                                 <div class="input-container text-start col-10">
-                                    <input v-model="newTask.text"
+                                    <input v-model="newTask.text" @keyUp.enter="addTask()"
                                         :class="alert = (isInputEmpty) ? 'border-danger bg-danger bg-opacity-50' : ''"
                                         class="form-input col-10" type="text">
                                     <p v-if="message == 'done'">Task aggiunta correttamente!</p>
                                     <p v-else-if="message == 'error'" class="text-danger">Inserisci qualcosa da fare</p>
 
                                 </div>
-                                <div class="form-btn">
+                                <div @click="addTask()" class="form-btn">
                                     <i class="bi bi-floppy2-fill"></i>
                                 </div>
                             </div>
